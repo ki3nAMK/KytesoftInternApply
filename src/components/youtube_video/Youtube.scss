@@ -1,0 +1,150 @@
+@mixin d-flex-custom($isColumn:false,$jc:center,$at:center) {
+    display: flex ;
+    justify-content: $jc ;
+    align-items: $at ;
+    @if $isColumn {
+        flex-direction: column ;
+    } 
+}
+.videoContainer {
+    position: absolute ;
+    top: 0 ;
+    left: 0 ; 
+    z-index: -1;
+    width: 100% ;
+    height: 100vh ;
+    overflow: hidden ;
+    video {
+        width: 100vw ;
+        height: auto ;
+    } 
+}
+.YoutubeWrapper {
+    padding-top: 100px;
+    z-index: 0 ;
+    @include d-flex-custom(true) ;
+    width: 100%; 
+    height: 70vh;
+    .contentTrailer {
+        z-index: 0;
+        @include d-flex-custom(true) ;
+        width: 100% ;
+        h1,h3 {
+            z-index: -1;
+            width: 100% ;
+            text-align: center ;
+            color: white ; 
+        }
+        h1 {
+            font-size: 42px ;
+        }
+        h3 {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        .inputWrapper {
+            margin-top: 20px ;
+            width: 90% ;
+            @include d-flex-custom(false,space-around,flex-start) ;
+            .inputNExpandInput {
+                @include d-flex-custom(false,flex-start) ;
+                width: 100% ;
+                margin-right: 1% ;
+                flex-wrap: wrap;
+                .advanceOption {
+                    width: 100% ;
+                    cursor: pointer ;
+                    margin-top: 10px ;
+                    color:white ; 
+                    @include d-flex-custom(false, flex-start) ;
+                    font-size: 15px ;
+                }
+                .selectAdvance {
+                    margin: 20px 1% 10px 0 ;
+                }
+                .input1,.selectWrapper {
+                    width: 23% ;
+                }
+            }   
+            .input1,.selectWrapper,button {
+                svg {
+                    opacity: 0.3 ;
+                }
+                position: relative;
+                cursor: pointer;
+                @include d-flex-custom(false, space-between) ;
+                border: 0 ; 
+                margin-right: 1% ;
+                height: 40px ;
+                background-color: white ;
+                padding: 0 0.6% 0 0.6% ;
+                border-radius: 7px ; 
+                input,select {
+                    border: 0 ; 
+                    outline: none ;
+                    width: 90% ;
+                }
+                select::-ms-expand {
+                    display: none;
+                }
+                select {
+                    opacity: 0.8;
+                    -moz-appearance: none;
+                        appearance: none ;
+                    -webkit-appearance: none;
+                    padding: 0.775em 0 0.975em 0;
+
+                }
+            }
+            button {
+                width: 23%;
+                margin-right: 0 ; 
+                @include d-flex-custom() ;
+                background-color: rgba(236,89,88,255) ;
+                p {
+                    color : white ; 
+                    font-size: 16px ;
+                }
+            }
+        }
+    }
+}
+@media (max-width:1243px) {
+    .videoContainer {
+        video {
+            width: 1243px ;
+        }
+    }
+}
+@media (max-width:767px) {
+    .videoContainer {
+        height: 500px;
+        video {
+            height: 100% ;
+            width:auto ;
+        }
+    }
+    .YoutubeWrapper {
+        height: 400px;
+        @include d-flex-custom(true,center,flex-start) ;
+        .contentTrailer {
+            h1 {
+                font-size: 26px ;
+            }
+            h3 {
+                font-size: 15px ;
+            }
+            .inputWrapper {
+                margin-top: 10px ;
+                .inputNExpandInput {
+                    width: 80% ;
+                    .input1,.selectWrapper,button {
+                        padding-left: 10px ;
+                        width: 100% ;
+                        margin: 0 0 5px 0 ; 
+                    }
+                }
+            }
+        }
+    }
+}

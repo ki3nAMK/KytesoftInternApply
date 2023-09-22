@@ -1,0 +1,367 @@
+@mixin d-flex-custom($isColumn:false,$jc:center,$at:center) {
+    display: flex ;
+    justify-content: $jc ;
+    align-items: $at ;
+    @if $isColumn {
+        flex-direction: column ;
+    } 
+}
+.menu_d_none {
+    display: none ;
+}
+li {
+    list-style-type: none ;
+}
+* {
+    margin: 0 ;
+    padding: 0 ; 
+}
+.translateX_minus8point5vw {
+    transform: translateX(-216px) ;
+}
+.translateX_21vw {
+    transform: translateX(244.8px) ;
+}
+.translateX_34px {
+    transform: translateX(340px);
+}
+.translateX_0 {
+    transform: translateX(0);
+}
+.navbar_Blur {
+    z-index: 10;
+    overflow-x: hidden;
+    transition: 0.5s ;
+}
+.navBar_Blur_Drawer {
+    z-index: 11;
+    transition: 0.5s ;
+    background-color: rgba(241,241,242,255) ;
+    height: 100vh ;
+    width: 340px;
+    position: fixed ;
+    right: 0;
+    overflow-x: hidden ;
+    overflow-y: scroll ;  
+    @include d-flex-custom(true,flex-start) ; 
+    .crossLine {
+        width: 250px ;
+        margin-left:5px ; 
+        border: 1px solid black ;
+        opacity: 0.1; 
+    }
+    .menuDrawer {
+        width: 748px ;
+        transition: 0.5s ;
+        margin: 20px 0 0 ; 
+        @include d-flex-custom(false,space-between,flex-start) ;
+        &_after,&_before {
+            width: 374px ;
+            .text {
+                &:hover {
+                    color: red ; 
+                }
+            }
+            ul {
+                li {
+                    cursor: pointer ;
+                    font-family: Poppins, Helvetica, Arial, sans-serif;
+                    font-size: 24px;
+                    font-weight: 800;
+                    p {
+                        font-size: 22px;
+                        margin-bottom: 5px ;
+                    }
+                } 
+                .liInside {
+                    margin-left: 30px ;
+                    font-size: 20px;
+                }
+            }
+        }
+        &_after {
+            height: 60vh ;
+            li {
+                margin-bottom: 15px ;
+            }
+        }
+        &_before {
+            width: 280.24px ;
+            .back {
+                @include d-flex-custom(false,flex-start) ;
+                margin-bottom: 10px ;
+            }
+        }
+    }
+    .classheader {
+        &:hover {
+            transform: translateY(-5px);
+        }
+        transition:0.5s ;
+        padding: 40px 0 0 0 ; 
+        width: 80% ;
+        @include d-flex-custom(false,flex-end) ;
+        button {
+            height: 40px ;
+            width: 40px ;
+            border-radius: 50% ;
+            background-color: red ;
+            color: white ; 
+            border: 0 ; 
+            @include d-flex-custom( ) ;
+        }
+    }
+}
+.hidden_navBar {
+    background-color: rgba(233, 170, 170, 0.456);
+    border-bottom: 1px solid black ; 
+    transform: translateY(-100px);
+}
+.bgWhite {
+    background-color: white ;
+}
+.navbar {
+    position: fixed ;
+    z-index: 1 ;
+    // position: relative;
+    transition: 0.25s ;
+    &_menuSideBar {
+        position: absolute;
+        top: 0 ; 
+        left: 0 ;
+        width: calc(100vw - 20px) ;
+        height: calc(100vh - 20px) ;
+        border: 10px solid white ;
+        opacity: 0.4;
+        z-index: 5;
+    }   
+    &_Blur {
+        transition:0.5s ; 
+        position: absolute;
+        top: 0 ; 
+        left: 0 ;
+        width: 100vw;
+        height: 100vh ;
+        z-index: 10;
+        background-color: rgba(247, 247, 247, 0.4);
+        backdrop-filter: blur(10px);
+    }
+    @include d-flex-custom(false,space-around) ;
+    width: 100% ;
+    &_ImgContainer {
+        @include d-flex-custom() ;
+        width: 3% ;
+        height: 50px;
+        img {
+            width: auto ;
+            height: 150px ;
+        }
+    } 
+    &_Content {
+        width: 800px ;
+        height: 5vw ;
+        &_List {
+            &_logo {
+                scale: 0.7;
+                transition: 0.25s;
+            }
+            height: 100%;
+            @include d-flex-custom(false,space-around) ;
+            &_Item {    
+                height: 100% ;
+                cursor: pointer ;
+                position: relative ;
+                @include d-flex-custom() ;
+                p {
+                    color: white ; 
+                    font-size: 13px  ;
+                    font-weight: 800 ;
+                }
+                div {
+                    color:white ; 
+                    @include d-flex-custom() ;
+                    scale: 0.8;
+                } 
+                &:hover>ul.menuDropDown{
+                    visibility: visible ;
+                    opacity: 1;
+                }
+                .menuDropDown {
+                    background-color: white ;
+                    transition: 0.25s ;
+                    @include d-flex-custom(true,flex-start,flex-start) ;
+                    opacity: 0 ;
+                    visibility: hidden;
+                    position: absolute ;
+                    top: 70px ;
+                    width: 230px ; 
+                    border-radius: 5px ;
+                    div.crossLine {
+                        border: 0.1px solid black ; 
+                        width: calc( 40px + 100%) ; 
+                        position: relative ;
+                        left: -20px ; 
+                        opacity: 0.1;
+                    }
+                    &_item {
+                        height: 40px ;
+                        width: 100% ;
+                        @include d-flex-custom(false,center,center) ;
+                        width: 100% ; 
+                        p {
+                            font-weight: 500;
+                            color: black ; 
+                            width: 90% ;
+                            @include d-flex-custom(false,space-between,center) ;
+                        }
+                    }
+                    .specialMenu {
+                        height: 40px;
+                        position: relative;
+                        width: 100% ; 
+                        p {
+                            font-weight: 500;
+                            color: black ; 
+                            width: 90% ;
+                            @include d-flex-custom(false,space-between,center) ;
+                        }
+                        @include d-flex-custom(false,center,center) ;
+                        &:hover>ul{
+                            opacity: 1;
+                        }
+                        &>ul {
+                            background-color: white ;
+                            transition: 0.25s ;
+                            display: block ;
+                            opacity: 0 ;
+                            border-radius: 5px ;
+                            position: absolute ;
+                            left: 100%  ; 
+                            top: 0 ; 
+                            width: 100% ;
+                        }
+                        &>ul>li {
+                            height: 40px;
+                            position: relative;
+                            width: 100% ; 
+                            @include d-flex-custom(false,center,center) ;
+                            p {
+                                width: 90% ;
+                                @include d-flex-custom(false,space-between,center) ;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } 
+}
+.p-top {
+    padding: 5px 0 5px 0 ; 
+}
+.footer {
+    transition: 0.5s;
+    margin: 20px 0 20px 30px   ;
+    width: 100% ;
+    @include d-flex-custom(true) ;
+    .logo {
+        width: 97% ;
+        @include d-flex-custom(false,flex-start) ;
+        span {
+            margin-left: 10px ;
+        }
+    }
+    .imageWrapper {
+        margin-bottom: 20px ;
+        position: relative;
+        width: 100% ;
+        .image {
+            margin-left: 5% ;
+            width: 85% ;
+            overflow: hidden ;
+            border-radius: 5px ;
+            height: 179.438px ;
+            img {
+                width: 100% ;
+                height: auto ;
+            }
+        }
+        .detail {
+            position: absolute ;
+            top: 45% ;
+            color: white ; 
+            left: 5% ; 
+            .price {
+                width: 100% ;
+                &_detail {
+                    background-color: red ;
+                    width: 100px ;
+                    font-weight: 800;
+                    text-align: center;
+                }
+                &_detail_second {
+                    .text_hidden {
+                        padding-right: 5px;
+                        text-decoration: line-through;
+                        opacity: 0.5;
+                        font-weight: normal;
+                    }
+                    background-color: red ;
+                    width: 150px ;
+                    font-weight: 800;
+                    text-align: center;
+                }
+            }
+            h1 , .rate {
+                margin-left: 20px ;
+            }
+            h1 {
+                margin-top:15px ; 
+                font-size: 17px ;
+            }
+            .rate {
+                svg {
+                    color: rgb(202, 193, 193) ;
+                    width: 15px ;
+                    height: 15px ;
+                }
+            }
+        }
+    }
+}
+@media (max-width:1200px) {
+    .navbar {
+        @include d-flex-custom() ;
+        &_Content {
+            margin-left: 50px ;
+        }
+    }
+}
+@media (max-width:955px) {
+    .d-none {
+        display: none ;
+    }    
+    .navbar {
+        &_ImgContainer {
+            @include d-flex-custom(false,flex-start) ;
+            img {
+                transform: translateX(-20%);
+            }
+        }
+        width: 90% ;
+        padding: 5px 5% 0 5% ; 
+        @include d-flex-custom(false,space-between) ;
+        &_Content {
+            width: 50% ;
+            &_List {
+                @include d-flex-custom(false,flex-end) ;
+            }
+        }
+    }
+}
+.cl_white {
+    color: white ;
+}
+.cl_black {
+    color: black ;
+}

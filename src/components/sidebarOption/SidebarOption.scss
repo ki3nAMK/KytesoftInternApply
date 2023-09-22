@@ -1,0 +1,115 @@
+@mixin d-flex-custom($isColumn:false,$jc:center,$at:center) {
+    display: flex ;
+    justify-content: $jc ;
+    align-items: $at ;
+    @if $isColumn {
+        flex-direction: column ;
+    } 
+}
+.transform-X340px {
+    transform: translateX(340px);
+}
+.sideBarOption {
+    transition: 0.5s;
+    z-index: 1000;
+    height: 100vh ; 
+    @include d-flex-custom(false,center,flex-start) ;
+    position: fixed ;
+    top: 0 ; 
+    right: 0 ;
+    &_option {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        @include d-flex-custom(true) ;
+        background-color: white ;
+        padding:10px ;
+        border-radius: 5px 0 0 5px ;
+        margin-top: 160px;
+        span>svg {
+            font-weight: 100;
+            opacity: 0.5;
+            width: 20px ;
+            height: 20px ;
+        }
+        span:nth-child(2) {
+            margin: 10px 0 10px 0 ; 
+        }
+        span:nth-child(3) {
+            margin-bottom: 10px ;
+        }
+    }
+    &_content {
+        overflow-y: scroll;
+        height: 100vh ;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        @include d-flex-custom(true,flex-start) ;
+        background-color: white ;
+        width: 320px ;
+        padding: 0 10px 0 10px ; 
+        h1,p {
+            text-align: center ;
+        }
+        h1 {
+            font-size: 16px ;
+            margin-top: 30px ;
+            margin-bottom: 10px ;
+        }
+        p {
+            width: 85%;
+            font-size: 12px ;
+            opacity: 0.5;
+            margin-bottom: 30px ;
+        }
+        .predefinedColor {
+            h1 {
+                margin-bottom: 30px ;
+            }
+            width: 100% ;
+            .colorWrapper {
+                width: 100% ;
+                @include d-flex-custom(false,space-around) ;
+                span {
+                    border-radius: 50% ;
+                    width: 30px ;
+                    height: 30px ;
+                }
+                span.red {
+                    background-color: red ;
+                }
+                span.orange {
+                    background-color: orange ;
+                }
+                span.yellow {
+                    background-color: yellow ;
+                }
+                span.green {
+                    background-color: green ;
+                }
+                span.blue {
+                    background-color: blue ;
+                }
+                span.skyblue {
+                    background-color: skyblue ;
+                }
+                span.purple {
+                    background-color: purple ;
+                }
+                span.brown {
+                    background-color: brown ;
+                }
+            }
+        }
+        .imageHoverWrapper {
+            width: 100%;
+            @include d-flex-custom(false,space-around) ;
+        }
+        .scd {
+            margin-top: 20px ; 
+            flex-wrap: wrap ;
+        }
+    }
+}
+@media (max-width:766px) {
+    .sideBarOption {
+        display: none ;
+    }
+}

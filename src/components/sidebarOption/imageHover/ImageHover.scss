@@ -1,0 +1,49 @@
+@mixin d-flex-custom($isColumn:false,$jc:center,$at:center) {
+    display: flex ;
+    justify-content: $jc ;
+    align-items: $at ;
+    @if $isColumn {
+        flex-direction: column ;
+    } 
+}
+.imageHover {
+    margin-bottom: 10px;
+    position: relative;
+    width: 45% ;
+    img {
+        width: 100% ;
+        height: auto ;
+    }
+    &:hover .content {
+        opacity: 1;
+    }
+    .content {
+        transition: 0.5s;
+        opacity: 0 ;
+        backdrop-filter: blur(2px);
+        position: absolute ;
+        width: 100% ;
+        height: 80px; 
+        top: 0 ; 
+        left: 0; 
+        @include d-flex-custom(true) ; 
+        h4 {
+            text-align: center;
+            font-size: 14px;
+            color: white ;
+            margin-bottom: 10px ;
+        }
+        button {
+            background-color: rgba(225, 30, 30, 0) ;
+            color: white ; 
+            padding: 5px 14px 5px 14px  ; 
+            border: 2px solid white ; 
+            border-radius: 3px ;
+            transition: 0.25s ;
+            &:hover {
+                color: black ; 
+                background-color: white ; 
+            }
+        }
+    }
+}
