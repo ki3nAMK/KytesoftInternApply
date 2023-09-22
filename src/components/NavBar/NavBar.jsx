@@ -102,6 +102,7 @@ function NavBar() {
         window.addEventListener("scroll", (e) => {
             const width = screen.width ;
             if(width>=943) {
+                setScrollY(false) ;
                 if(window.scrollY<300) {
                     setScrollY(true) ;
                 } else {
@@ -192,7 +193,7 @@ function NavBar() {
             setModeModal("translateX_34px")
         }
     }
-    return <div className={" navbar "+(!scrollY && "hidden_navBar")+(bgWhite && " bgWhite")}>
+    return <div className={"navbar "+(!scrollY && " hidden_navBar ")+(bgWhite && " bgWhite")}>
         <div className="navbar_ImgContainer">
             <img src={img} alt="" />
         </div>
