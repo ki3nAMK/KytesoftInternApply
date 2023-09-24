@@ -96,7 +96,7 @@ function NavBar() {
     const [open,setOpen] = useState(false) ;
     const [numLock,setNumLock] = useState(null) ;
     const [modeModal,setModeModal] = useState("translateX_34px") ;
-    const [scrollY,setScrollY] = useState(false) ;
+    const [scrollY,setScrollY] = useState(true) ;
     const [bgWhite,setBgWhite] = useState(false) ;
     useEffect( () => {
         window.addEventListener("scroll", (e) => {
